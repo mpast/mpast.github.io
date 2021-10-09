@@ -1,31 +1,22 @@
-import React from 'react';
-import './App.css';
-
+import React, { Component } from 'react';
 import Header from './components/Header';
 import About from './components/About';
-import Apps from './components/Apps';
-import Contact from './components/Contact';
-import Navbar from './components/Navbar'
-
-function App() {
-  return (
-    <div className="App">
-      <Navbar></Navbar>
-      <div className="App-header">
-      <Header></Header>
+import Portfolio from './components/Portfolio';
+import ContactUs from './components/ContactUs';
+import Footer from './components/Footer';
+import data from './yourdata';
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Header data={data}/>
+        <About data={data}/>
+        <Portfolio data={data}/>
+        <ContactUs data={data}/>
+        <Footer data={data}/>
       </div>
-      
-      <div className='about'>
-        <About></About>
-      </div>
-      <div className='apps'>
-        <Apps></Apps>
-      </div>
-      <div className='contact'>
-        <Contact></Contact>
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

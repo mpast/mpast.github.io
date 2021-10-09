@@ -1,19 +1,39 @@
 import React, { Component } from 'react';
-import Fade from 'react-reveal/Fade';
-import data from '../yourdata';
+export default class About extends Component {
+  render() {
+    let data = this.props.data;
+    return (
+      <section id="about">
+         <div className="row">
 
-class About extends Component {
-    state = {}
-    render() {
-        return (<div className='about'>
-            <div className='about-content'>
-                <h1><Fade bottom cascade>About.</Fade></h1>
-                <Fade bottom>
-                    <p>{data.abouttext}</p>
-                </Fade>
+            <div className="nine columns main-col">
+
+               <h2>About Me</h2>
+               <p>
+               {
+                 data.aboutme
+               }
+               </p>
+
+               <div className="row">
+
+                  <div className="columns contact-details">
+
+                  <h2>Contact Details</h2>
+                  <p className="address">
+       						<span>{data.name}</span>
+                     <br></br>
+       						   <span>
+                      {data.address}
+                      </span>
+                    <br></br>
+                    <a href={`${data.url}`} target="_blank" rel="noopener noreferrer">{data.url}</a>
+       				    </p>
+                  </div>
+               </div>
             </div>
-        </div>);
-    }
+         </div>
+      </section>
+    );
+  }
 }
-
-export default About;
