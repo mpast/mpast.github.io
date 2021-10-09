@@ -3,11 +3,11 @@ export default
         name : 'mónica.',
         headerTagline: [
                         'Hi 👋 I am Mónica Pastor.',
-                        'Application Security Analyst',
+                        'Product Security Engineer',
     ],
         cv: 'CV.pdf',
         contactEmail: 'pastorabanades@gmail.com',
-        abouttext: 'I am a Security Analyst with previous experience in fullstack web development. Currently I integrate security solutions into development lifecycle DevSecOps pipelines, conduct vulnerability assessments and code reviews: SAST and SCA. Also provides support in secure development to developer teams articulating security issues and mitigations to technical audience.',
+        abouttext: 'I am a Security Engineer with previous experience in fullstack web development and application security. Currently I integrate and automate security solutions into development lifecycle and conduct vulnerability assessments to assure the security of the product. Also provides support the management of security issues and mitigations to technical audience.',
         projects: [
            {
                 id: 1,
