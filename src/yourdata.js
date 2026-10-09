@@ -16,7 +16,7 @@ let data = {
           "className":"fa fa-github"
         }
       ],
-    "aboutme":"I am a Security Engineer with previous experience in fullstack web development and application security. Currently I integrate and automate security solutions into development lifecycle and conduct vulnerability assessments to assure the security of the product. Also provides support the management of security issues and mitigations to technical audience.",
+    "aboutme":"I am a Security Engineer with previous experience in fullstack web development, appsec/product security and AI analyst. I integrate and automate security solutions and AI into secure development lifecycle and conduct vulnerability assessments to assure the security of the product. Also provides support the management of security issues and mitigations to technical audience.",
     "address":"Madrid (Spain)",
     "url":"https://mpast.github.io",
     "skillsDescription":"Your skills here",
@@ -38,7 +38,7 @@ let data = {
       {
         "name":"OWASP Mobile Audit",
         "description":"SAST and Malware analysis in Android Apps",
-        "imgurl":"https://github.com/mpast/mobileAudit/raw/main/app/static/menu.png",
+        "imgurl":"https://github.com/mpast/mobileAudit/blob/main/app/static/screenshots/dashboard.png",
         "url": "https://github.com/mpast/mobileAudit/"
       },
       {
