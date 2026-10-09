@@ -38,7 +38,7 @@ let data = {
       {
         "name":"OWASP Mobile Audit",
         "description":"SAST and Malware analysis in Android Apps",
-        "imgurl":"https://github.com/mpast/mobileAudit/raw/main/app/static/screenshots/dashboard.png",
+        "imgurl":"https://raw.githubusercontent.com/mpast/mobileAudit/refs/heads/main/app/static/screenshots/dashboard.png",
         "url": "https://github.com/mpast/mobileAudit/"
       },
       {
