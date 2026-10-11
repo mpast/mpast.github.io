@@ -5,6 +5,8 @@ on:
     - main
     - master
 name: Semgrep
+permissions:
+  contents: read
 jobs:
   semgrep:
     name: Scan
