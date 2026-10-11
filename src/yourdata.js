@@ -32,6 +32,9 @@ let data = {
       },
       {
         "skillname":"Pentesting"
+      },
+      {
+        "skillname":"AI"
       }
     ],
     "portfolio":[
