@@ -1,29 +1,5 @@
-import React, { Component } from 'react';
-export default class Footer extends Component {
-  render() {
-    let data = this.props.data;
-    return (
-      <footer>
-      <div className="row">
-        <div className="twelve columns">
-          <ul className="social-links">
-            {
-              data.socialLinks && data.socialLinks.map((item)=>{
-                return(
-                  <li key={`${item.url}`}>
-                    <a href={item.url}>
-                    <i className={item.className} />
-                    </a>
-                  </li>
-                )
-              })
-            }
-          </ul>
-          
-        </div>
-        <div id="go-top"><a className="smoothscroll" title="Back to Top" href="#home"><i className="icon-up-open" /></a></div>
-      </div>
-    </footer>
-    );
-  }
+import React from 'react';
+
+export default function Footer({ data }) {
+  return <footer><div className="page-width footer-inner"><a className="brand smoothscroll" href="#home" aria-label={`${data.name}, home`}>mp<span>.</span></a><p>{data.name} <span aria-hidden="true">·</span> {data.address}</p><a className="smoothscroll back-top" href="#home">Back to top <span aria-hidden="true">↑</span></a></div></footer>;
 }

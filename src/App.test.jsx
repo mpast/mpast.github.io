@@ -63,17 +63,50 @@ describe('portfolio after dependency upgrades', () => {
     window.dispatchEvent(new Event('scroll'));
     expect(container.querySelector('#nav li.current a').hash).toBe('#about');
     expect(nav.classList.contains('opaque')).toBe(true);
-    expect(nav.style.display).toBe('none');
+    expect(nav.style.display).toBe('');
+    expect(container.querySelector('#nav li.current a').getAttribute('aria-current')).toBe('location');
     vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(375);
     window.dispatchEvent(new Event('resize'));
     expect(nav.style.display).toBe('');
   });
 
-  it('resizes the hero and removes global listeners on unmount', () => {
+  it('opens and closes mobile navigation with accessible state', () => {
+    renderApp();
+    const toggle = container.querySelector('.menu-toggle');
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+    act(() => toggle.click());
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(container.querySelector('#nav').classList.contains('is-open')).toBe(true);
+    container.querySelector('#about').scrollIntoView = vi.fn();
+    act(() => container.querySelector('#nav a[href="#about"]').click());
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+  });
+
+  it('moves keyboard focus to the destination when the mobile menu closes', () => {
+    renderApp();
+    const toggle = container.querySelector('.menu-toggle');
+    const target = container.querySelector('#about');
+    const link = container.querySelector('#nav a[href="#about"]');
+    target.scrollIntoView = vi.fn();
+    const focus = vi.spyOn(target, 'focus');
+    act(() => toggle.click());
+    link.focus();
+    expect(document.activeElement).toBe(link);
+    // Native keyboard activation of an anchor produces a click with detail 0.
+    act(() => link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, detail: 0 })));
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+    expect(container.querySelector('#nav').classList.contains('is-open')).toBe(false);
+    expect(document.activeElement).toBe(target);
+    expect(target.getAttribute('tabindex')).toBe('-1');
+    expect(focus).toHaveBeenCalledWith({ preventScroll: true });
+    expect(target.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
+  });
+
+  it('leaves hero sizing to responsive CSS and removes global listeners on unmount', () => {
     const removeWindowListener = vi.spyOn(window, 'removeEventListener');
     const removeDocumentListener = vi.spyOn(document, 'removeEventListener');
     renderApp();
-    expect(container.querySelector('header').style.height).toBe(`${window.innerHeight}px`);
+    expect(container.querySelector('header').style.height).toBe('');
     act(() => root.unmount());
     expect(removeWindowListener).toHaveBeenCalledWith('resize', expect.any(Function));
     expect(removeWindowListener).toHaveBeenCalledWith('scroll', expect.any(Function));

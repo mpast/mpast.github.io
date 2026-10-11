@@ -19,9 +19,11 @@ class App extends Component {
     return (
       <div className="App">
         <Header data={data}/>
+        <main>
         <About data={data}/>
         <Portfolio data={data}/>
         <ContactUs data={data}/>
+        </main>
         <Footer data={data}/>
       </div>
     );
